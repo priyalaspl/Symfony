@@ -1,7 +1,15 @@
 controllers:
     resource: ../src/Controller/
     type: annotation
+    prefix:   /blog
 
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+homepage:
+    path: /
+    controller: App\Controller\HomeController::list
+    defaults:
+        path: /blog
+        permanent: true
