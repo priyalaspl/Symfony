@@ -22,16 +22,14 @@ class HomeController extends AbstractController
      */
     public function show(int $id): Response
     {
-        return new Response(
-            '<p>'.$id.'</p>'
-            );
+        return $this->redirectToRoute('edit_blog', ['id' => $id]);
     }
 
-    #[Route('/blog/{id}', name: 'edit blog' ,methods: ['GET'])]
+    #[Route('/blog/{id}', name: 'edit_blog' ,methods: ['GET'])]
     public function edit(int $id) : Response
     {
         return new Response(
-            '<p>'.$url = $this->generateUrl('edit blog', ['id' => 10]).'</p>'
+            '<p>'.$url = $this->generateUrl('edit_blog', ['id' => $id]).'</p>'
             );
     }
 }
