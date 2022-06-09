@@ -4,6 +4,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class HomeController extends AbstractController
 {
@@ -31,6 +32,12 @@ class HomeController extends AbstractController
         return new Response(
             '<p>'.$url = $this->generateUrl('edit_blog', ['id' => $id]).'</p>'
             );
+    }
+
+    #[Route('/', name: 'index')]
+    public function index(): Response {
+//         throw $this->createNotFoundException('The product does not exist');
+        throw new NotFoundHttpException('The product does not exist');
     }
 }
 
