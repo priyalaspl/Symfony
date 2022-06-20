@@ -36,8 +36,11 @@ class HomeController extends AbstractController
 
     #[Route('/', name: 'index')]
     public function index(): Response {
+        return new Response(
+            '<html><body>Lucky number: 212</body></html>'
+            );
 //         throw $this->createNotFoundException('The product does not exist');
-        throw new NotFoundHttpException('The product does not exist');
+//         throw new NotFoundHttpException('The product does not exist');
     }
 }
 
