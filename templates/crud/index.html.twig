@@ -9,14 +9,39 @@
 </style>
 
 <div class="example-wrapper">
-    {% for user in data %}
-    <h1>Hello {{ user }}! ✅</h1>
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice">
+        {# for using need to update version of node 12 #}
+            {{ message }} <img src="{{ asset('image/cancel.png') }}" alt="cancel"/ style= "height:18px">
+        </div>
     {% endfor %}
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/priyal/web/Symfony/practice/src/Controller/CrudController.php'|file_link(0) }}">src/Controller/CrudController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/priyal/web/Symfony/practice/templates/crud/index.html.twig'|file_link(0) }}">templates/crud/index.html.twig</a></code></li>
-    </ul>
+    <form action="{{ path('store') }}" method="POST">
+     <div class="form-group">
+        <label for="fname">First name:</label>
+        <input type="text" class="form-control" placeholder="Enter fname" id="fname" name="fname">
+      </div>
+       <div class="form-group">
+        <label for="lname">Last name:</label>
+        <input type="text" class="form-control" placeholder="Enter lname" id="lname" name="lname">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Phonenumber:</label>
+        <input type="text" class="form-control" placeholder="Enter number" id="number" max="10" name="number">
+      </div>
+      <div class="form-group">
+       <label for="sel1">Conunty:</label>
+          <select class="form-control" id="country" name="country">
+            <option>Select Country</option>
+            <option value = '1'>India</option>
+            <option value = '2'>Australlia</option>
+            <option value = '3'>Japan</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 {% endblock %}
