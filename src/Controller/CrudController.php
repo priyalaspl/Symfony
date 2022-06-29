@@ -13,7 +13,8 @@ class CrudController extends AbstractController
     #[Route('/crud', name: 'app_crud')]
     public function index(Connection $connection): Response
     {
-        return $this->render('crud/index.html.twig');
+        $title = $this->getParameter('title');
+        return $this->render('crud/index.html.twig',['title' => $title]);
     }
 
     #[Route('/store', name: 'store')]
